@@ -3,37 +3,25 @@
 {% block title %}Articulo index{% endblock %}
 
 {% block body %}
-    <h1>Articulo index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titulo</th>
-                <th>Descripcion</th>
-                <th>Codigo</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h1>Bienvenido a los articulos</h1>
+    <br><br>
         {% for articulo in articulos %}
-            <tr>
-                <td>{{ articulo.id }}</td>
-                <td>{{ articulo.titulo }}</td>
-                <td>{{ articulo.descripcion }}</td>
-                <td>{{ articulo.codigo }}</td>
-                <td>
-                    <a href="{{ path('app_articulo_show', {'id': articulo.id}) }}">show</a>
-                    <a href="{{ path('app_articulo_edit', {'id': articulo.id}) }}">edit</a>
+                <h2>{{ articulo.titulo }}</h2>
+                <br>
+                <p>Descripción: {{ articulo.descripcion }} </p>
+                <p>Codigo:{{ articulo.codigo }}</p>
+                <br><br>
+                    <a href="{{ path('app_articulo_show', {'id': articulo.id}) }}">Mostrar articulo</a>
+                    <a href="{{ path('app_articulo_edit', {'id': articulo.id}) }}">Editar articulo</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">No hay articulos dentro de la base de datos</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_articulo_new') }}">Create new</a>
+    <a href="{{ path('app_articulo_new') }}">Crear un nuevo articulo</a>
 {% endblock %}
